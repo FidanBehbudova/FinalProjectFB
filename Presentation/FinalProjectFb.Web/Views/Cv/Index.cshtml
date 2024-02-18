@@ -1,0 +1,47 @@
+﻿@using FinalProjectFb.Application.ViewModels
+@using FinalProjectFb.Domain.Entities
+@using FinalProjectFb.ViewModels
+@model PaginateVM<Cv>
+@{
+	int count = 0;
+}
+
+<div class="section-top-border">
+	<style>
+		.section-top-border {
+			display: flex;
+			justify-content: center;
+		}
+	</style>
+
+	<div class="progress-table-wrap">
+		<h3 style="color:darkblue">Cvs</h3>
+		<br />
+		<div class="progress-table">
+			<div class="table-head">
+				<div class="serial">No</div>
+				<div class="country">Job</div>
+				<div class="visit">Status</div>
+				<div class="status">Settings</div>
+
+			</div>
+			@foreach (var item in Model.Items)
+			{
+				count++;
+				<div class="table-row">
+					<div class="serial">@count</div>
+					<div class="country">@item.Name</div>
+					@* <div class="visit"><a asp-action="index" asp-controller="job" asp-route-id="@item.Id">Cv</a></div> *@
+					@* <div class="country">
+						<a asp-action="create" asp-controller="job" asp-route-id="@item.Id" class="genric-btn primary-border circle">Update</a>
+					</div> *@
+
+
+				</div>
+			}
+
+		</div>
+
+	</div>
+	
+</div>

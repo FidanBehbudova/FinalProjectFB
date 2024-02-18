@@ -1,0 +1,57 @@
+﻿@using FinalProjectFb.Application.ViewModels.Users
+@model UpdateUserVM
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>RegistrationForm_v1 by Colorlib</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- MATERIAL DESIGN ICONIC FONT -->
+	<link rel="stylesheet" href="~/assets/account/updateuser/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="~/assets/account/updateuser/css/style.css">
+</head>
+
+<body>
+
+	<div class="wrapper" style="background-image: url('/assets/account/updateuser/images/it-talent-acquisition-strategies.jpg.webp');">
+		<div style="border-radius:25px" class="inner">
+			<div class="image-holder">
+				<img style="border-radius:25px" src="~/assets/account/updateuser/images/abstract-hand-holding-smartphone-smart-city-background-concept-hologram-virtual-reality-background-vector.jpg" alt="">
+			</div>
+			<form action="" method="post">
+				<h3>Registration Form</h3>
+				<div class="form-group">
+					
+					<input asp-for="Name" class="form-control" id="exampleInputUsername1" placeholder="Name">
+					
+					<input asp-for="Surname" type="text" placeholder="Surname" class="form-control">
+				</div>
+				<div class="form-wrapper">
+					<input type="text" placeholder="Username" class="form-control">
+					<i class="zmdi zmdi-account"></i>
+				</div>
+				<div class="form-wrapper">
+					<input asp-for="Email" type="email" placeholder="Email Address" class="form-control">
+					<i class="zmdi zmdi-email"></i>
+				</div>
+				
+				<div class="form-wrapper">
+					<input asp-for="Password" type="password" placeholder="Password" class="form-control">
+					<i class="zmdi zmdi-lock"></i>
+				</div>
+				
+				<button type="submit">
+					
+					Submit
+					<i class="zmdi zmdi-arrow-right"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

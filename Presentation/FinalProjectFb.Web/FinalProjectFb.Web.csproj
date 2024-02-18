@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Manage\Data\" />
+    <Folder Include="Areas\Manage\Models\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\cv\css\.DS_Store" />
+    <None Include="wwwroot\assets\cv\fonts\.DS_Store" />
+    <None Include="wwwroot\assets\cv\images\.DS_Store" />
+    <None Include="wwwroot\assets\cv\scss\.DS_Store" />
+    <None Include="wwwroot\assets\job\css\.DS_Store" />
+    <None Include="wwwroot\assets\job\css\bootstrap\.DS_Store" />
+    <None Include="wwwroot\assets\job\css\bootstrap\mixins\.DS_Store" />
+    <None Include="wwwroot\assets\job\fonts\.DS_Store" />
+    <None Include="wwwroot\assets\job\images\.DS_Store" />
+    <None Include="wwwroot\assets\job\js\.DS_Store" />
+    <None Include="wwwroot\assets\job\php\.DS_Store" />
+    <None Include="wwwroot\assets\job\scss\.DS_Store" />
+    <None Include="wwwroot\assets\job\scss\bootstrap\.DS_Store" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.25">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Core\FinalProjectFb.Application\FinalProjectFb.Application.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure\FinalProjectFb.Infrastructure\FinalProjectFb.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure\FinalProjectFb.Persistence\FinalProjectFb.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

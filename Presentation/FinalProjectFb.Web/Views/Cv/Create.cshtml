@@ -1,0 +1,129 @@
+﻿@using FinalProjectFb.Application.ViewModels.Cv
+@model CreateCvVM
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="~/assets/cv/fonts/icomoon/style.css">
+
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="~/assets/cv/css/bootstrap.min.css">
+
+	<!-- Style -->
+	<link rel="stylesheet" href="~/assets/cv/css/style.css">
+
+	<title>Contact Form #6</title>
+</head>
+<body>
+
+
+	<div class="content">
+
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-10">
+
+
+					<div class="row justify-content-center">
+						<div class="col-md-6">
+
+							<h3 class="heading mb-4">Let's talk about everything!</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas debitis, fugit natus?</p>
+
+							<p><img src="~/assets/cv/images/undraw-contact.svg" alt="Image" class="img-fluid"></p>
+
+
+						</div>
+						<div class="col-md-6">
+                            <form class="mb-5" method="post" >
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <input asp-for="Name" type="text" class="form-control"  placeholder="Name">
+										<span class="text-danger" asp-validation-for="Name"></span>
+                                    </div>
+									<div class="col-md-6 form-group">
+										<input asp-for="Surname" type="text" class="form-control" placeholder="Surname">
+										<span class="text-danger" asp-validation-for="Surname"></span>
+									</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <input asp-for="FatherName" type="text" class="form-control" placeholder="Father Name">
+										<span class="text-danger" asp-validation-for="FatherName"></span>
+                                    </div>
+									<div class="col-md-6 form-group">
+										<input asp-for="PhoneNumber" type="" class="form-control" placeholder="Phone Number">
+										<span class="text-danger" asp-validation-for="PhoneNumber"></span>
+									</div>
+                                </div>
+								<div class="row">
+									<div class="col-md-6 form-group">
+										<input asp-for="EmailAddress" type="email" class="form-control" placeholder="Father Name">
+										<span class="text-danger" asp-validation-for="EmailAddress"></span>
+									</div>
+									<div class="col-md-6 form-group">
+										<input asp-for="FinnishCode" type="" class="form-control" placeholder="FinnishCode">
+										<span class="text-danger" asp-validation-for="FinnishCode"></span>
+									</div>
+								</div><div class="row">
+									<div class="col-md-6 form-group">
+										<input asp-for="Birthday" class="form-control" type="date" max="@DateTime.Now.AddYears(-18).ToString("yyyy-MM-dd")" required>
+										<span class="text-danger" asp-validation-for="Birthday"></span>
+									</div>
+									<div class="col-md-6 form-group">
+										<input asp-for="Address" type="text" class="form-control" placeholder="Address">
+										<span class="text-danger" asp-validation-for="Address"></span>
+									</div>
+									<div >
+										<button type="submit" >Submit</button>
+									</div>
+
+									<script>
+										var birthdayInput = document.querySelector('input[type="date"]');
+
+										birthdayInput.addEventListener('change', function () {
+											var selectedDate = new Date(this.value);
+											var minDate = new Date();
+											minDate.setFullYear(minDate.getFullYear() - 18);
+
+											if (selectedDate > minDate) {
+
+												alert('Persons under the age of 18 cannot register.');
+												this.value = '';
+											}
+										});
+								  
+
+								
+								    </script>
+                            </form>
+                            
+							<div id="form-message-warning mt-4"></div>
+							<div id="form-message-success">
+								Your message was sent, thank you!
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+	<script src="~/assets/cv/js/jquery-3.3.1.min.js"></script>
+	<script src="~/assets/cv/js/popper.min.js"></script>
+	<script src="~/assets/cv/js/bootstrap.min.js"></script>
+	<script src="~/assets/cv/js/jquery.validate.min.js"></script>
+	<script src="~/assets/cv/js/main.js"></script>
+
+</body>
+</html>

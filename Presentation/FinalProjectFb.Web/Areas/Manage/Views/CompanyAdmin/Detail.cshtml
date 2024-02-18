@@ -1,0 +1,82 @@
+﻿@using FinalProjectFb.Application.ViewModels
+@model CompanyDetailVM
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">@Model.Company.Name</h4>
+                <img style="height:150px;width:150px; margin-bottom: 20px; border-radius:30px" src="~/assets/img/icon/@Model.Company.Images.FirstOrDefault().Url" />
+                <p>@Model.Company.Description</p>
+                <style>
+                    .thick-btn {
+                        border-width: 5px;
+                    }
+                </style>
+                <a asp-action="confirmed" asp-controller="companyadmin" asp-route-id="@Model.Company.CompanyId" class="btn btn-light btn-rounded btn-fw thick-btn">Confirmed</a>
+                <a asp-action="deleted" asp-controller="companyadmin" asp-route-id="@Model.Company.CompanyId" class="btn btn-danger btn-rounded btn-fw thick-btn">Deleted</a>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Contact</h4>              
+                <style>
+                    .social-icon {
+                        font-size: 34px; 
+                    }
+                </style>
+
+                <div class="row">
+                    <div class="col d-flex align-items-center">
+                        <div class="d-flex flex-row align-items-center">
+                            <a href="@Model.Company.FacebookLink" target="_blank">
+                                <i class="mdi mdi-facebook-box social-icon"></i>
+                            </a>
+                            <p class="mb-0 ml-1">Facebook</p>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-center">
+                        <div class="d-flex flex-row align-items-center">
+                            <a href="@Model.Company.GmailLink" target="_blank">
+                                <i class="mdi mdi-gmail social-icon"></i>
+                            </a>
+                            <p class="mb-0 ml-1">Gmail</p>
+                        </div>
+                    </div>
+
+                    <div class="col d-flex align-items-center">
+                        <div class="d-flex flex-row align-items-center">
+                            <a href="@Model.Company.InstagramLink" target="_blank">
+                                <i class="mdi mdi-instagram social-icon"></i>
+                            </a>
+                            <p class="mb-0 ml-1">Instagram</p>
+                        </div>
+                    </div>
+
+                    <div class="col d-flex align-items-center">
+                        <div class="d-flex flex-row align-items-center">
+                            <a href="@Model.Company.TwitterLink" target="_blank">
+                                <i class="mdi mdi-twitter-circle social-icon"></i>
+                            </a>
+                            <p class="mb-0 ml-1">Twitter</p>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-center">
+                        <div class="d-flex flex-row align-items-center">
+                            <a href="@Model.Company.WebsiteLink" target="_blank">
+                                <i class="mdi mdi-web social-icon"></i>
+                            </a>
+                            <p class="mb-0 ml-1">Website</p>
+                        </div>
+                    </div>
+                </div>
+               
+
+            </div>
+        </div>
+    </div>
+</div>

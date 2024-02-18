@@ -1,0 +1,95 @@
+﻿@using FinalProjectFb.Application.ViewModels
+@using FinalProjectFb.Domain.Entities
+@model PaginateVM<Company>
+@{
+	int count = 0;
+}
+
+<div class="section-top-border">
+	<style>
+		.section-top-border {
+			display: flex;
+			justify-content: center;
+		}
+
+        .disabled-link {
+            color: red;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+	</style>
+   
+
+	<div class="progress-table-wrap">
+		<h3 style="color:darkblue">Companies</h3>
+		<br />
+		<a asp-action="confirmationform" asp-controller="company" asp-route-id="@Model.CompanyId" class="genric-btn primary-border circle">Create</a>
+		<br />
+		<br />
+		<div class="progress-table">
+			<div class="table-head">
+				<div class="serial">No</div>
+				<div class="country">Company</div>
+				<div class="visit">Jobs</div>
+                <div class="visit">Status</div>
+                <div class="visit">Settings</div>
+
+
+
+			</div>
+            @foreach (var item in Model.Items)
+            {
+                count++;
+                <div class="table-row">
+                    <div class="serial">@count</div>
+                    <div class="country" style="color: @(item.IsDeleted == true ? "red" : (item.IsDeleted == false ? "green" : "blue"))">@item.Name</div>
+                    <div class="visit">
+                        @if (item.IsDeleted == true || item.IsDeleted == null)
+                        {
+                            <a asp-action="index" asp-controller="job" asp-route-id="@item.Id" class="disabled-link" style="color: @(item.IsDeleted == true ? "red" : (item.IsDeleted == false ? "green" : "blue"))">Vacancy</a>
+                        }
+                        else
+                        {
+                            <a asp-action="index" asp-controller="job" asp-route-id="@item.Id" style="color: @(item.IsDeleted == true ? "red" : (item.IsDeleted == false ? "green" : "blue"))">Vacancy</a>
+                        }
+                    </div>
+                    <div class="visit" style="color: @(item.IsDeleted == true ? "red" : (item.IsDeleted == false ? "green" : "blue"))">
+                        @if (item.IsDeleted == null)
+                        {
+                            <p style="color: blue;">Pending</p>
+                        }
+                        else if (item.IsDeleted == true)
+                        {
+                            <p style="color: red;">Deleted</p>
+                        }
+                        else
+                        {
+                            <p style="color: green;">Confirmed</p>
+                        }
+                    </div>
+                    <div class="country">
+                        @if (item.IsDeleted == true)
+                        {
+                            <button class="genric-btn primary-border circle" disabled>Update</button>
+                        }
+                        else
+                        {
+                            <a asp-action="update" asp-controller="company" asp-route-id="@item.Id" class="genric-btn primary-border circle">Update</a>
+                        }
+                        <a asp-action="delete" asp-controller="company" asp-route-id="@item.Id" class="genric-btn primary-border circle">Delete</a>
+
+                    </div>
+                   
+
+                </div>
+            }
+
+
+
+
+
+
+		</div>
+		
+	</div>
+</div>

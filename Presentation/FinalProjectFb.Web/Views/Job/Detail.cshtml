@@ -1,0 +1,240 @@
+﻿@using FinalProjectFb.Application.ViewModels
+@model JobDetailVM
+
+
+<main>
+
+    <!-- Hero Area Start-->
+    <div class="slider-area ">
+        <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="/assets/img/hero/about.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+
+                        <div class="hero-cap text-center">
+                            <h2>@Model.Job.Category.Name</h2>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Area End -->
+    <!-- job post company Start -->
+
+    <div class="job-post-company pt-120 pb-120">
+        <div class="container">
+            <div class="row justify-content-between">
+                <!-- Left Content -->
+                <div class="col-xl-7 col-lg-8">
+                    <!-- job single -->
+                    <div class="single-job-items mb-50">
+                        <div class="job-items">
+
+                            <div class="company-img company-img-details">
+                                <a href="#"><img style="height:100px;width:100px" src="~/assets/img/icon/@Model.Job.Images.FirstOrDefault()?.Url" alt=""></a>
+                            </div>
+
+                            <div class="job-tittle">
+                                <a href="#">
+                                    <h4>@Model.Job.Name</h4>
+                                </a>
+                                <ul>
+                                    <li>@Model.Job.Category.Name</li>
+                                    <li><i class="fas fa-map-marker-alt"></i>@Model.Job.Company.CompanyCities.FirstOrDefault(c => c.City.Id == c.CityId)?.City.Name</li>
+                                    <li>$@Model.Job.Salary</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- job single End -->
+
+                    <div class="job-post-details">
+                        <div class="post-details1 mb-50">
+                            <!-- Small Section Tittle -->
+                            <div class="small-section-tittle">
+                                <h4>Job Description</h4>
+                            </div>
+                            <p></p>
+                        </div>
+                        <div class="post-details2  mb-50">
+                            <!-- Small Section Tittle -->
+                            <div class="small-section-tittle">
+                                <h4>Required Knowledge, Skills, and Abilities</h4>
+                            </div>
+                            <ul>
+                                @foreach (var sentence in @Model.Job.Requirement.Split('.'))
+                                {
+                                    <li>@sentence.Trim()</li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="post-details2  mb-50">
+                            <!-- Small Section Tittle -->
+                            <div class="small-section-tittle">
+                                <h4>Education + Experience</h4>
+                            </div>
+                            <ul>
+                                @foreach (var sentence in @Model.Job.Experience.Split('.'))
+                                {
+                                    <li>@sentence.Trim()</li>
+                                }
+                            </ul>                        
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Right Content -->
+                <div class="col-xl-4 col-lg-4">
+                    <div class="post-details3  mb-50">
+                        <!-- Small Section Tittle -->
+                        <div class="small-section-tittle">
+                            <h4>Job Overview</h4>
+                        </div>
+                        <ul>
+                            <li>Posted date : <span>
+                                    @{
+                                        TimeSpan difference = DateTime.Now - Model.Job.CreatedAt;
+
+                                        string timedifference = "";
+                                        if (difference.TotalDays >= 1)
+                                        {
+                                            timedifference = $"{(int)difference.TotalDays} days ago";
+                                        }
+                                        else if (difference.TotalHours >= 1)
+                                        {
+                                            timedifference = $"{(int)difference.TotalHours} hours ago";
+                                        }
+                                        else
+                                        {
+                                            timedifference = $"{(int)difference.TotalMinutes} minutes ago";
+                                        }
+                                    }
+
+                                    @timedifference
+                                </span>
+                            </li>
+                            @*   <li>Location : <span>@Model.Job.Company.CompanyCities.FirstOrDefault(c => c.CompanyId == c.Company.Id).City.Name</span></li> *@
+                            <li>Vacancy : <span>@Model.Job.Vacancy</span></li>
+                            <li>Job nature : <span>@Model.Job.JobNature</span></li>
+                            <li>Salary :  <span>$@Model.Job.Salary</span></li>
+                            <li>
+                                Discontinuation Date : <span>
+                                    @{
+                                        TimeSpan differencce = Model.Job.Deadline-DateTime.Now ;
+
+                                        string timedifferencce = "";
+                                        if (differencce.TotalDays >= 1)
+                                        {
+                                            timedifferencce = $"{(int)differencce.TotalDays} days later";
+                                        }
+                                        else if (difference.TotalHours >= 1)
+                                        {
+                                            timedifferencce = $"{(int)differencce.TotalHours} hours later";
+                                        }
+                                        else
+                                        {
+                                            timedifferencce = $"{(int)differencce.TotalMinutes} minutes later";
+                                        }
+                                    }
+
+                                    @timedifferencce
+                                </span>
+                            </li>
+
+                        </ul>
+                        <div class="apply-btn2">
+
+                            <a asp-action="create" asp-controller="cv" asp-route-JobId="@Model.Job.JobId" class="btn">Apply Now</a>
+                        </div>
+                    </div>
+                    <div class="post-details4  mb-50">
+                        <!-- Small Section Tittle -->
+                        <div class="small-section-tittle">
+                            <h4>Company Information</h4>
+                        </div>
+
+                        <a style="color:black;font-size:25px" asp-action="detail" asp-controller="company" asp-route-id="@Model.Job.Company.Id">@Model.Job.Company.Name</a>
+            
+                        <p>@Model.Job.Company.Description</p>
+                        <ul>
+
+
+                            <div class="d-flex flex-row align-items-center">
+                                <a href="@Model.Job.Company.InstagramLink" class="mr-3">
+                                    <i class="fab fa-instagram fa-2x" style="color:#fb246a;"></i>
+                                </a>
+                                <a href="@Model.Job.Company.FacebookLink" target="_blank" class="mr-3">
+                                    <i class="fab fa-facebook fa-2x" style="color: #fb246a;"></i>
+                                </a>
+                                <a href="@Model.Job.Company.TwitterLink" target="_blank" class="mr-3">
+                                    <i class="fab fa-twitter fa-2x" style="color: #fb246a;"></i>
+                                </a>
+                                <a href="@Model.Job.Company.WebsiteLink" target="_blank">
+                                    <i class="fas fa-globe fa-2x" style="color: #fb246a;"></i>
+                                </a>
+                            </div>
+
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Related Jobs Section -->
+    <div class="our-services section-pad-t25">
+        <div class="container">
+            <h2 class="text-center mb-4">Job postings in the same category</h2> 
+
+            <div class="row d-flex justify-contnet-center">
+                @foreach (var item in Model.RelatedJobs)
+                {
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="company-img">
+                                <a href="job_details.html"><img style="height:150px;width:150px" src="~/assets/img/icon/@item.Images.FirstOrDefault().Url" alt=""></a>
+                            </div>
+                            <br />
+                            <div class="services-cap">
+                                <h5><a href="job_listing.html">@item.Name</a></h5>
+                                <span>@(item?.Company?.Name)</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Company Jobs Section -->
+    <div class="our-services section-pad-t25">
+        <div class="container">
+            <h2 class="text-center mb-4">Other job postings of the company</h2> 
+
+            <div class="row d-flex justify-contnet-center">
+                @foreach (var item in Model.CompanyJobs)
+                {
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="company-img">
+                                <a href="job_details.html"><img style="height:150px;width:150px" src="~/assets/img/icon/@item.Images.FirstOrDefault(c=>c.IsPrimary==null)?.Url" alt=""></a>
+                            </div>
+                            <br />
+                            <div class="services-cap">
+                                <h5><a href="job_listing.html">@item.Name</a></h5>
+                                <span>@item?.Company?.Name</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+</main>
+

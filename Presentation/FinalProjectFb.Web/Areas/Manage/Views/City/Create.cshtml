@@ -1,0 +1,19 @@
+﻿@using FinalProjectFb.Application.ViewModels
+@model CreateCityVM
+<div class="col-md-6 grid-margin stretch-card">
+	<div class="card">
+		<div class="card-body">
+			<h4 class="card-title">Create City</h4>
+			<form class="forms-sample" method="post">
+				
+				<div class="form-group">
+					<label asp-for="Name" for="exampleInputUsername1">Name</label>
+					<input asp-for="Name" class="form-control" id="exampleInputUsername1" placeholder="Name">
+					<span asp-validation-for="Name" class="text-danger"></span>
+				</div>
+				<button type="submit" class="btn btn-primary mr-2">Submit</button>
+				<a asp-action="index" asp-controller="city" class="btn btn-dark">Cancel</a>
+			</form>
+		</div>
+	</div>
+</div>
